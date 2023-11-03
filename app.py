@@ -17,7 +17,7 @@ def proxy(path):
     
     # 修改origin头部为https://www.bing.com
     headers['Host'] = 'sydney.bing.com'
-    headers['origin'] = 'https://www.bing.com'
+    headers['Origin'] = 'https://www.bing.com'
     
     # 发送请求给https://sydney.bing.com，并获取响应
     response = requests.request(method, url, headers=headers, data=data)
