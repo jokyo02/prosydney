@@ -20,7 +20,7 @@ RUN pip3 install gunicorn
 ENV FLASK_APP=app.py
 
 # 暴露8080端口
-EXPOSE 7080
+EXPOSE 10000
 
 # 运行Gunicorn服务器，绑定0.0.0.0:8080，指定proxy:app为应用入口
-CMD ["gunicorn", "-b", "0.0.0.0:7080", "app:app"]
+CMD ["gunicorn", "-b", "0.0.0.0:10000", "app:app"]
