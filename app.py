@@ -11,7 +11,7 @@ app = Flask(__name__)
 def proxy(path):
     # 获取用户的请求方法、URL、头部和数据
     method = request.method
-    url = 'wss://sydney.bing.com/' + path
+    url = 'https://sydney.bing.com/' + path
     headers = dict(request.headers)
     data = request.data or request.form or None
     
