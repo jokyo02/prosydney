@@ -11,12 +11,12 @@ app = Flask(__name__)
 def proxy(path):
     # 获取用户的请求方法、URL、头部和数据
     method = request.method
-    url = 'https://sydney.bing.com/' + path
+    url = 'wss://sydney.bing.com/' + path
     headers = dict(request.headers)
     data = request.data or request.form or None
     
     # 修改origin头部为https://www.bing.com
-    #headers['host'] = 'sydney.bing.com'
+    headers['host'] = 'sydney.bing.com'
     headers['origin'] = 'https://www.bing.com'
     
     # 发送请求给https://sydney.bing.com，并获取响应
