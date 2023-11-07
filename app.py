@@ -56,7 +56,7 @@ if '_U=' not in cookie:
     cookies += '; _U=' + randomString(128)
 
 # 设置新的请求头中的 Cookie 字段为 cookies
-newHeaders.set('Cookie', cookies)
+headers['Cookie'] = cookies
     
     # 发送请求给https://sydney.bing.com，并获取响应
     response = requests.request(method, url, headers=headers, data=data)
