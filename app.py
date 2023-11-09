@@ -33,10 +33,10 @@ def proxy(path):
     for key, value in request.headers.items():
         if key.lower() in KEEP_REQ_HEADERS:
             headers[key] = value
-    headers['origin'] = SYDNEY_ORIGIN
+    headers['origin'] = 'https://www.bing.com'
     headers['referer'] = 'https://www.bing.com/search?q=Bing+AI'
-    rand_ip = '163.47.101.101'
-    headers['X-Forwarded-For'] = rand_ip
+   # rand_ip = '163.47.101.101'
+   # headers['X-Forwarded-For'] = rand_ip
 
     cookie = request.headers.get('Cookie') or ''
     cookies = cookie
