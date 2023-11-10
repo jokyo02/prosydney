@@ -1,13 +1,16 @@
 # Import the Flask module
 from flask import Flask, request, Response, jsonify
 
+# Import the urllib module
+from urllib.parse import urlparse
+
 # Create an instance of the Flask class
 app = Flask(__name__)
 
 # Define a global variable for the cookie
 _U = '1NssJY8JoQgpNNg8fXA66mbbkV5Ev0YAin-YBPurJ69Zsa0gQ-Bq6eINo9NBQ7tam-OM4pykcZqsteI91B6BNM2AgD1XLp8Xy_yL34R2xDEGsb1V-lpIysooyQOlfECAtk_VJRtKUUWLXOI2TLVpfsrqcQhPGF56o56yge4LI11oy7q3K2v2zRSe6c6kpwP6bwtGVJF6cNtmxgzaf0UTEuw; WLS=C=4f32388253816ce8&N=cf03' #cf03
 
-# Define a decorator to handle CORS requests
+# Define a function to handle CORS requests
 def corsify(f):
     # Define a wrapper function
     def wrapper(*args, **kwargs):
@@ -102,7 +105,15 @@ def fetch():
         return handle_websocket()
     # Create a new URL object based on the request URL
     uri = request.url
+    # Parse the URL with the urlparse function
+    parsed_url = urlparse(uri)
     # Set the hostname to www.bing.com
-    uri.host = 'www.bing.com'
+    hostname = 'www.bing.com'
+    # Reconstruct the URL with the new hostname
+    new_url = parsed_url._replace(netloc=hostname).geturl()
     # Fetch the response from the new URL
-    return fetch(uri)
+    return fetch(new_url)
+
+# Run the app
+if __name__ == '__main__':
+    app.run()
