@@ -96,6 +96,7 @@ def handle_websocket():
     # Return the new response
     return newRes
 
+
 # Define a route for the root path
 @app.route('/', methods=['GET', 'HEAD', 'POST', 'OPTIONS'])
 # Define a function to handle requests to the root path
@@ -115,8 +116,10 @@ def fetch():
     hostname = 'www.bing.com'
     # Reconstruct the URL with the new hostname
     new_url = parsed_url._replace(netloc=hostname).geturl()
+    # Create a request object from the new URL
+    req = Request(new_url)
     # Fetch the response from the new URL
-    return fetch(new_url)
+    return fetch(req)
 
 # Run the app
 if __name__ == '__main__':
