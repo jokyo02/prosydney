@@ -4,6 +4,9 @@ from flask import Flask, request, Response, jsonify
 # Import the urllib module
 from urllib.parse import urlparse
 
+# Import the urllib module
+from urllib.request import Request, urlopen
+
 # Create an instance of the Flask class
 app = Flask(__name__)
 
