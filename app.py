@@ -68,8 +68,14 @@ def handle_websocket():
 
     # Fetch the server response
     res =  fetch(serverRequest)
-    # Create a new response object based on the server response
-    newRes = Response(res.get_data(), res.status_code, res.headers)
+    # Get the data from the server response
+    data = res.get_data()
+    # Create a new URL object based on the data
+    url = data.decode('utf-8')
+    # Fetch the response from the URL
+    newRes = fetch(url)
+    # Create a new response object based on the new response
+    newRes = Response(newRes.get_data(), newRes.status_code, newRes.headers)
 
     # Set the CORS headers
     newRes.headers['Access-Control-Allow-Credentials'] = 'true'
@@ -86,8 +92,6 @@ def handle_websocket():
 
     # Set the TestLog and Guestip headers
     newRes.headers['TestLog'] = "This is Sydney@" + textip
-    Guestip =  request.headers.get('cf-connecting-ip')
-    newRes.headers['Guestip'] = Guestip
 
     # Return the new response
     return newRes
