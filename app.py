@@ -14,7 +14,7 @@ def proxy(url, method, headers, data):
         r = requests.post(url, headers=headers, data=data, stream=True)
     else:
         # 其他方法暂不支持
-        return Response(status=405)
+        return Response(status=200)
     # 返回一个响应对象，保留原始响应的状态码和头部
     return Response(r.content, status=r.status_code, headers=r.headers.items())
 
@@ -38,4 +38,4 @@ def other(path):
 
 # 运行Flask应用，监听7860端口
 if __name__ == '__main__':
-    app.run(port=7860, debug=True)
+    app.run(port=10000, debug=True)
