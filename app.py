@@ -3,7 +3,8 @@ import requests
 
 app = Flask(__name__)
 
-SYDNEY_ORIGIN = 'https://www.bing.com'
+# SYDNEY_ORIGIN = 'https://www.bing.com'
+SYDNEY_ORIGIN ='https://testwebing.nbing.eu.org'
 KEEP_REQ_HEADERS = [
   'accept',
   'accept-encoding',
