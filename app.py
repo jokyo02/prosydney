@@ -61,9 +61,10 @@ def proxy(path):
     for k, v in response.raw.headers.items():
       if k.lower() == 'set-cookie':
         # Get the host from the request
-        host = request.host
+        # host = request.host
         # Set the domain attribute to the host value
-        v = v.replace('; domain=', f'; domain={host}')
+        # v = v.replace('; domain=', f'; domain={host}')
+        v = v.replace('; domain=', f'')
         resp_headers.append((k, v))
     return Response(
         response=response.content,
