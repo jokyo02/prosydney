@@ -56,7 +56,8 @@ def proxy(path):
     resp_headers = response.headers.items()
     # Retain the original set-cookies
     resp_headers = [(k, v) for k, v in resp_headers if k.lower() != 'set-cookie']
-    resp_headers.extend([(k, v) for k, v in response.raw.headers.items() if k.lower() == 'set-cookie'])
+    #resp_headers.extend([(k, v) for k, v in response.raw.headers.items() if k.lower() == 'set-cookie'])
+    resp_headers = [(k, v.replace('; domain=', '')) for k, v in resp_headers if k.lower() == 'set-cookie']
     return Response(
         response=response.content,
         status=response.status_code,
