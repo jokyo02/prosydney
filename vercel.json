@@ -1,0 +1,12 @@
+{
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "app.py"
+    }
+  ],
+  "env": {
+    "SYDNEY_ORIGIN": "https://testwebing.nbing.eu.org",
+    "KEEP_REQ_HEADERS": "accept,accept-encoding,accept-language,connection,cookie,upgrade,user-agent,sec-websocket-extensions,sec-websocket-key,sec-websocket-version,x-request-id,content-length,content-type,access-control-request-headers,access-control-request-method"
+  }
+}
