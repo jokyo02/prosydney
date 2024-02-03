@@ -23,8 +23,8 @@ KEEP_REQ_HEADERS = [
   'access-control-request-method',
 ]
 
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
+@app.route('/', defaults={'path': ''},methods=['GET', 'POST'])
+@app.route('/<path:path>',methods=['GET', 'POST'])
 def proxy(path):
     # Get the target url from the request url
     target_url = SYDNEY_ORIGIN + request.full_path
